@@ -1,0 +1,23 @@
+{
+    "721": {
+        "3568e07d31ab3c217ea594bfff9744a00a91225fa53244514ffeefb5": {
+            "GoldenEntryTicketDrJekyll2291": {
+                "author": "Book.io community",
+                "collection": "Charity raffle for Ripple Africa",
+                "charity": "Ripple Africa",
+                "description": [
+                    "Ripple Africa is inspiring communities in Malawi, ",
+                    "to achieve a sustainable future."
+                ],
+                "image": "ipfs://Qmazkd2b4WmrHA6H5M3xkH1d4uGyT8vCHvPD6C92E3gyQY",
+                "name": "Golden Entry Ticket: Dr Jekyll #2291",
+                "type": "image/jpeg",
+                "url": "https://rippleafrica.org",
+                "variant": "golden",
+                "bonus": [
+                    "One perpetual entry ticket"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "721": {
+        "3568e07d31ab3c217ea594bfff9744a00a91225fa53244514ffeefb5": {
+            "GoldenEntryTicketTreasureIsland0924": {
+                "author": "Book.io community",
+                "collection": "Charity raffle for Ripple Africa",
+                "charity": "Ripple Africa",
+                "description": [
+                    "Ripple Africa is inspiring communities in Malawi, ",
+                    "to achieve a sustainable future."
+                ],
+                "image": "ipfs://QmceoeiFkz7GEmbSDXDfi7EsKUinLBoJYEuKQDBxATdjBx",
+                "name": "Golden Entry Ticket: Treasure Island #0924",
+                "type": "image/jpeg",
+                "url": "https://rippleafrica.org",
+                "variant": "golden",
+                "bonus": [
+                    "One perpetual entry ticket"
+                ]
+            }
+        }
+    }
+}

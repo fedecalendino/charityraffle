@@ -1,0 +1,23 @@
+{
+    "721": {
+        "3568e07d31ab3c217ea594bfff9744a00a91225fa53244514ffeefb5": {
+            "GoldenEntryTicketTheWizardTim1856": {
+                "author": "Book.io community",
+                "collection": "Charity raffle for Ripple Africa",
+                "charity": "Ripple Africa",
+                "description": [
+                    "Ripple Africa is inspiring communities in Malawi, ",
+                    "to achieve a sustainable future."
+                ],
+                "image": "ipfs://QmcALqJTGokH7ANgQyfgNJ1FbK6uhQk1Ur7ZoDAznn532m",
+                "name": "Golden Entry Ticket: The Wizard Tim #1856",
+                "type": "image/jpeg",
+                "url": "https://rippleafrica.org",
+                "variant": "golden",
+                "bonus": [
+                    "One perpetual entry ticket"
+                ]
+            }
+        }
+    }
+}

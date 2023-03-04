@@ -1,0 +1,7 @@
+tmp.py
+
+*.py[cod]
+
+.DS_Store
+.idea
+.venv
