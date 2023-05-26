@@ -1,9 +1,22 @@
+from typing import List
+
 import toolkit
+
+
+COLLECTION_NAME = "Charity raffle for Ripple Africa"
+COLLECTION_AUTHOR = "Book.io community"
+COLLECTION_DESCRIPTION = [
+    "Ripple Africa is inspiring communities in Malawi, ",
+    "to achieve a sustainable future.",
+]
+
+CHARITY_NAME = "Ripple Africa"
+CHARITY_URL = "https://rippleafrica.org"
 
 POLICY_ID = "3568e07d31ab3c217ea594bfff9744a00a91225fa53244514ffeefb5"
 
-NORMAL_IPFS = "QmdmRRGCmpWDuVvWfXaheba4FVEdR76AxeV1efs9nsNLha"
-NORMAL_SUPPLY = 2475
+NORMAL_TICKET_IPFS = "QmdmRRGCmpWDuVvWfXaheba4FVEdR76AxeV1efs9nsNLha"
+NORMAL_TICKET_SUPPLY = 2475
 
 GOLDENS = {
     "A Christmas Carol  #0446": {
@@ -92,10 +105,58 @@ GOLDENS = {
 }
 
 
+def metadata_template(
+    policy_id: str,
+    collection_name: str,
+    collection_author: str,
+    collection_description: List[str],
+    charity_name: str,
+    charity_url: str,
+    name: str,
+    variant: str,
+    ipfs: str,
+    number: int = None,
+    bonus: str = None,
+):
+    if number is not None:
+        name = f"{name} #{number:04}"
+
+    id = name.title().replace(" ", "").replace("#", "").replace(":", "")
+
+    metadata = {
+        "721": {
+            policy_id: {
+                id: {
+                    "author": collection_author,
+                    "collection": collection_name,
+                    "charity": charity_name,
+                    "description": collection_description,
+                    "image": f"ipfs://{ipfs}",
+                    "name": name,
+                    "type": "image/jpeg",
+                    "url": charity_url,
+                    "variant": variant,
+                }
+            }
+        }
+    }
+
+    if bonus:
+        metadata["721"][policy_id][id]["bonus"] = bonus
+
+    return id, name, metadata
+
+
 toolkit.generate_metadata(
-    POLICY_ID,
-    normal_ipfs=NORMAL_IPFS,
-    normal_supply=NORMAL_SUPPLY,
+    metadata_template=metadata_template,
+    policy_id=POLICY_ID,
+    collection_name=COLLECTION_NAME,
+    collection_author=COLLECTION_AUTHOR,
+    collection_description=COLLECTION_DESCRIPTION,
+    charity_name=CHARITY_NAME,
+    charity_url=CHARITY_URL,
+    normal_ipfs=NORMAL_TICKET_IPFS,
+    normal_supply=NORMAL_TICKET_SUPPLY,
     goldens=GOLDENS,
     make_zip=False,
 )

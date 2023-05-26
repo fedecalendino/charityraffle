@@ -38,48 +38,14 @@ def take_snapshot(
                 print(f"{address}: {asset_name} ({asset_id})")
 
 
-def metadata_template(
-    policy_id: str,
-    name: str,
-    variant: str,
-    ipfs: str,
-    number: int = None,
-    bonus: str = None,
-):
-    if number is not None:
-        name = f"{name} #{number:04}"
-
-    id = name.title().replace(" ", "").replace("#", "").replace(":", "")
-
-    metadata = {
-        "721": {
-            policy_id: {
-                id: {
-                    "author": "Book.io community",
-                    "collection": "Charity raffle for Ripple Africa",
-                    "charity": "Ripple Africa",
-                    "description": [
-                        "Ripple Africa is inspiring communities in Malawi, ",
-                        "to achieve a sustainable future.",
-                    ],
-                    "image": f"ipfs://{ipfs}",
-                    "name": name,
-                    "type": "image/jpeg",
-                    "url": "https://rippleafrica.org",
-                    "variant": variant,
-                }
-            }
-        }
-    }
-
-    if bonus:
-        metadata["721"][policy_id][id]["bonus"] = bonus
-
-    return id, name, metadata
-
-
 def generate_metadata(
+    metadata_template: callable,
     policy_id: str,
+    collection_name: str,
+    collection_author: str,
+    collection_description: List[str],
+    charity_name: str,
+    charity_url: str,
     normal_ipfs: str,
     normal_supply: int,
     goldens: dict,
@@ -93,6 +59,11 @@ def generate_metadata(
     for i in range(1, normal_supply + 1):
         id, name, metadata = metadata_template(
             policy_id=policy_id,
+            collection_name=collection_name,
+            collection_author=collection_author,
+            collection_description=collection_description,
+            charity_name=charity_name,
+            charity_url=charity_url,
             name="Raffle Entry Ticket",
             variant="normal",
             ipfs=normal_ipfs,
@@ -108,6 +79,11 @@ def generate_metadata(
 
         id, name, metadata = metadata_template(
             policy_id=policy_id,
+            collection_name=collection_name,
+            collection_author=collection_author,
+            collection_description=collection_description,
+            charity_name=charity_name,
+            charity_url=charity_url,
             name=f"Golden Entry Ticket: {prize}",
             variant="golden",
             ipfs=data["ipfs"],
