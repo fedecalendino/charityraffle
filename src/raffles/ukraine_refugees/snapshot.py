@@ -1,4 +1,5 @@
 import toolkit
+from goldens import GOLDENS
 
 ID = "ukraine"
 NAME = "OG Community Raffle for Ukraine Refugees and Displaced Persons"
@@ -10,5 +11,6 @@ toolkit.take_snapshot(
     ID,
     NAME,
     POLICY_ID,
+    goldens=GOLDENS,
     verbose=True,
 )

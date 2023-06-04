@@ -49,7 +49,7 @@ def get_holder(asset_id: str) -> str:
 
 def snapshot(
     policy_id: str,
-    extra_asset_ids: List[str] = None,
+    golden_asset_ids: List[str] = None,
     skip_jpg: bool = True,
     verbose: bool = False,
 ) -> Iterable[Tuple[str, str]]:
@@ -64,11 +64,13 @@ def snapshot(
             _, asset_name = utils.split(asset_id)
             print(f"  * found: {asset_id}: {asset_name}")
 
+    print()
     print(f"assets for {policy_id}: {len(assets)} assets")
 
-    assets.extend(list(extra_asset_ids or []))
+    assets.extend(list(golden_asset_ids or []))
     print(f"assets for {policy_id} + goldens: {len(assets)} assets")
 
+    print()
     print(f"fetching owners for {len(assets)} assets")
 
     for asset_id in assets:

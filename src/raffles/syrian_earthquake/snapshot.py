@@ -1,5 +1,5 @@
-import goldens
 import toolkit
+from goldens import GOLDENS, ALL_GOLDENS
 
 ID = "syrian_earthquake"
 NAME = "Charity raffle for earthquake victims in Syria"
@@ -11,6 +11,7 @@ toolkit.take_snapshot(
     ID,
     NAME,
     POLICY_ID,
-    extra_asset_ids=goldens.GOLDENS.keys(),
+    goldens=GOLDENS,
+    all_goldens=ALL_GOLDENS,
     verbose=True,
 )

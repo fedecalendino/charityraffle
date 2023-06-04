@@ -11,20 +11,25 @@ def take_snapshot(
     id: str,
     name: str,
     policy_id: str,
-    extra_asset_ids: List[str] = None,
+    goldens: dict,
+    all_goldens: dict = None,
     verbose: bool = False,
 ):
     print(f"SNAPSHOT:{name} ({id})")
 
+    all_goldens = all_goldens or {}
+
+    golden_lines = []
+
     with open(f"./files/snapshot.txt", "w+") as file:
-        snap = blockfrostio.snapshot(
+        snapshot = blockfrostio.snapshot(
             policy_id,
-            extra_asset_ids=extra_asset_ids,
+            golden_asset_ids=all_goldens.keys(),
             verbose=verbose,
             skip_jpg=True,
         )
 
-        for asset_id, address in snap:
+        for asset_id, address in snapshot:
             policy_id, asset_name = utils.split(asset_id)
 
             line = f"{address}: {asset_name}"
@@ -34,8 +39,14 @@ def take_snapshot(
 
             file.write(f"{line} \n")
 
-            if "gold" in asset_name.lower() and policy_id in asset_id:
-                print(f"{address}: {asset_name} ({asset_id})")
+            if asset_id in goldens:
+                golden_lines.append(line)
+
+    print()
+    print("GOLDEN TICKET OWNERS")
+
+    for line in golden_lines:
+        print(f"  * {line}")
 
 
 def generate_metadata(
