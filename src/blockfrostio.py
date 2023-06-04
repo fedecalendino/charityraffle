@@ -21,9 +21,8 @@ def get_assets(policy_id: str) -> Iterable[dict]:
         page += 1
 
         url = f"https://cardano-mainnet.blockfrost.io/api/v0/assets/policy/{policy_id}"
-        params = {"page": page}
+        response = requests.get(url, params={"page": page}, headers=HEADERS)
 
-        response = requests.get(url, params=params, headers=HEADERS)
         json = response.json()
 
         if not json:
@@ -54,29 +53,42 @@ def snapshot(
     skip_jpg: bool = True,
     verbose: bool = False,
 ) -> Iterable[Tuple[str, str]]:
-    print(f"🔎 fetching assets for {policy_id}")
+    print(f"fetching assets for {policy_id}")
 
-    asset_ids = []
+    assets = []
 
     for asset_id in get_assets(policy_id):
-        asset_ids.append(asset_id)
-
-    asset_ids.extend(list(extra_asset_ids or []))
-
-    for asset_id in asset_ids:
-        policy_id, asset_name = utils.split(asset_id)
+        assets.append(asset_id)
 
         if verbose:
-            print(f"  * fetching addresses for '{asset_name}'")
+            _, asset_name = utils.split(asset_id)
+            print(f"  * found: {asset_id}: {asset_name}")
 
-        address = get_holder(asset_id)
+    print(f"assets for {policy_id}: {len(assets)} assets")
 
-        if not address:
+    assets.extend(list(extra_asset_ids or []))
+    print(f"assets for {policy_id} + goldens: {len(assets)} assets")
+
+    print(f"fetching owners for {len(assets)} assets")
+
+    for asset_id in assets:
+        _, asset_name = utils.split(asset_id)
+
+        owner = get_holder(asset_id)
+
+        if not owner:
             continue
 
-        if address == JPGSTORE_ADDRESS and skip_jpg:
+        if owner == JPGSTORE_ADDRESS:
             if verbose:
-                print(f"    > skipping asset listed in jpg.store")
-            continue
+                print(f"  * found owner: {owner} (jpg)")
 
-        yield asset_id, address
+            if skip_jpg:
+                if verbose:
+                    print(f"    > skipping asset listed in jpg.store")
+                continue
+        else:
+            if verbose:
+                print(f"  * found owner: {owner}")
+
+        yield asset_id, owner

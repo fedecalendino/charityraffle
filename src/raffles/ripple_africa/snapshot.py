@@ -1,5 +1,5 @@
-import toolkit
 import goldens
+import toolkit
 
 ID = "ripple_africa"
 NAME = "OG Community Raffle for Ripple Africa"

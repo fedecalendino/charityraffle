@@ -2,7 +2,6 @@ from typing import List
 
 import toolkit
 
-
 COLLECTION_NAME = "Charity raffle for Ripple Africa"
 COLLECTION_AUTHOR = "Book.io community"
 COLLECTION_DESCRIPTION = [

@@ -29,12 +29,12 @@ def take_snapshot(
 
             line = f"{address}: {asset_name}"
 
-            file.write(f"{line} \n")
-
             if verbose:
                 print(f"{line}")
 
-            if "Gold" in asset_name and policy_id in asset_id:
+            file.write(f"{line} \n")
+
+            if "gold" in asset_name.lower() and policy_id in asset_id:
                 print(f"{address}: {asset_name} ({asset_id})")
 
 
@@ -70,6 +70,8 @@ def generate_metadata(
             number=i,
         )
 
+        print(f"Generated: {name}")
+
         with open(output / f"{id}.json", "w+") as file:
             file.write(json.dumps(metadata, indent=4))
 
@@ -90,7 +92,7 @@ def generate_metadata(
             bonus=bonus,
         )
 
-        print(name)
+        print(f"Generated: {name}")
 
         with open(output / f"{id}.json", "w+") as file:
             file.write(json.dumps(metadata, indent=4))
