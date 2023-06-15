@@ -44,8 +44,10 @@ def get_holder(asset_id: str) -> str:
     json = response.json()
 
     for item in json:
-        return item["address"]
-
+        try:
+            return item["address"]
+        except:
+            return None
 
 def snapshot(
     policy_id: str,
@@ -74,11 +76,13 @@ def snapshot(
     print(f"fetching owners for {len(assets)} assets")
 
     for asset_id in assets:
-        _, asset_name = utils.split(asset_id)
-
         owner = get_holder(asset_id)
 
+        policy_id, asset_name = utils.split(asset_id)
+
         if not owner:
+            if verbose:
+                print(f"  *  {asset_name} was not minted")
             continue
 
         if owner == JPGSTORE_ADDRESS:
