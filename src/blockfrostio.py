@@ -1,5 +1,6 @@
 import os
 import time
+from functools import lru_cache
 from typing import List, Iterable, Tuple
 
 import requests
@@ -49,11 +50,25 @@ def get_holder(asset_id: str) -> str:
         except:
             return None
 
+
+@lru_cache
+def get_stake_key(address: str) -> str:
+    time.sleep(0.1)
+
+    url = f"https://cardano-mainnet.blockfrost.io/api/v0/addresses/{address}"
+
+    response = requests.get(url, headers=HEADERS)
+    json = response.json()
+
+    return json.get("stake_address")
+
+
 def snapshot(
     policy_id: str,
     golden_asset_ids: List[str] = None,
     skip_jpg: bool = True,
     verbose: bool = False,
+    stake_key: bool = False,
 ) -> Iterable[Tuple[str, str]]:
     print(f"fetching assets for {policy_id}")
 
@@ -70,6 +85,7 @@ def snapshot(
     print(f"assets for {policy_id}: {len(assets)} assets")
 
     assets.extend(list(golden_asset_ids or []))
+    assets = set(assets)
     print(f"assets for {policy_id} + goldens: {len(assets)} assets")
 
     print()
@@ -96,5 +112,8 @@ def snapshot(
         else:
             if verbose:
                 print(f"  * found owner: {owner}")
+
+        if stake_key:
+            owner = get_stake_key(owner)
 
         yield asset_id, owner

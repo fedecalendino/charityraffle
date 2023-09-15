@@ -1,10 +1,10 @@
 import toolkit
 from goldens import GOLDENS, ALL_GOLDENS
 
-ID = "syrian_earthquake"
-NAME = "Charity raffle for earthquake victims in Syria"
+ID = "kumwe_hub"
+NAME = "Raffle for Kumwe Hub - Save the Children"
 
-POLICY_ID = "dcaae559714f022242d3302378374d8e117abff4c2ab6de2ed235c98"
+POLICY_ID = "eed8d82ba538429e6b11af6db02196c07b7505c1a8334ed16ed9a6e0"
 
 
 toolkit.take_snapshot(
