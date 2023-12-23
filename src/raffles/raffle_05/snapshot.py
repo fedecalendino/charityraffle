@@ -13,6 +13,6 @@ toolkit.take_snapshot(
     POLICY_ID,
     goldens=GOLDENS,
     all_goldens=ALL_GOLDENS,
-    verbose=True,
     stake_key=True,
+    verbose=True,
 )

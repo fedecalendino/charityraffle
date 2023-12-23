@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import blockfrostio
 import utils
 
@@ -12,12 +14,15 @@ def take_snapshot(
     verbose: bool = False,
 ):
     print(f"SNAPSHOT:{name} ({id})")
+    files = Path("./files")
+
+    if not files.exists():
+        files.mkdir()
 
     all_goldens = all_goldens or {}
-
     golden_lines = []
 
-    with open(f"./files/snapshot.txt", "w+") as file:
+    with open(files / "snapshot.txt", "w+") as file:
         snapshot = blockfrostio.snapshot(
             policy_id,
             golden_asset_ids=all_goldens.keys(),
@@ -45,7 +50,7 @@ def take_snapshot(
     print()
     print("GOLDEN TICKET OWNERS")
 
-    with open(f"./files/goldens.txt", "w+") as file:
+    with open(files / "goldens.txt", "w+") as file:
         for line in golden_lines:
             print(f"  * {line}")
             file.write(f"{line} \n")
