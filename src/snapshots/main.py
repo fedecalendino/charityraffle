@@ -7,7 +7,7 @@ raffle = raffle_06
 path = Path(f"../../files/{raffle.id}")
 path.mkdir(parents=True, exist_ok=True)
 
-with open(f"{path}/snapshot.txt", "w+") as file:
+with open(path / "snapshot.txt", "w+") as file:
     for address, asset_name in raffle.full_snapshot:
         line = f"{address}: {asset_name}"
 
@@ -15,7 +15,7 @@ with open(f"{path}/snapshot.txt", "w+") as file:
         file.write(f"{line}\n")
 
 
-with open(f"{path}/golden.txt", "w+") as file:
+with open(path / "golden.txt", "w+") as file:
     for address, asset_name in raffle.golden_snapshot:
         line = f"{address}: {asset_name}"
 

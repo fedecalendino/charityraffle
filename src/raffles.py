@@ -3,6 +3,7 @@ from base import Raffle
 
 raffle_01 = Raffle(
     id="ukraine",
+    number=1,
     name="OG Community Raffle for Ukraine Refugees and Displaced Persons",
     policy_id="12c1f9c6754952e2c26b37af3c8facee41ed5b398c0223ff9f4848c4",
     goldens={
@@ -36,6 +37,7 @@ raffle_01 = Raffle(
 
 raffle_02 = Raffle(
     id="ripple_africa",
+    number=2,
     name="OG Community Raffle for Ripple Africa",
     policy_id="3568e07d31ab3c217ea594bfff9744a00a91225fa53244514ffeefb5",
     goldens={
@@ -71,6 +73,7 @@ raffle_02 = Raffle(
 
 raffle_03 = Raffle(
     id="syrian_earthquake",
+    number=3,
     name="Charity raffle for earthquake victims in Syria",
     policy_id="dcaae559714f022242d3302378374d8e117abff4c2ab6de2ed235c98",
     goldens={
@@ -129,6 +132,7 @@ raffle_03 = Raffle(
 
 raffle_04 = Raffle(
     id="kumwe_hub",
+    number=4,
     name="Raffle for Kumwe Hub - Save the Children",
     policy_id="eed8d82ba538429e6b11af6db02196c07b7505c1a8334ed16ed9a6e0",
     goldens={
@@ -180,6 +184,7 @@ raffle_04 = Raffle(
 
 raffle_05 = Raffle(
     id="zeltschule",
+    number=5,
     name="Charity raffle for Zeltschule e.V.",
     policy_id="acccccd01ef1519ae920d278fa34fa795a4a7728a276e941fcbbd83c",
     goldens={
@@ -234,6 +239,7 @@ raffle_05 = Raffle(
 
 raffle_06 = Raffle(
     id="ukrainian_children",
+    number=6,
     name="Charity Raffle for Ukrainian Children",
     policy_id="888cf451e36bcc4c6096daf0968faebbf05be366dd6f98f69f983581",
     goldens={
