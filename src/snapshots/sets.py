@@ -1,10 +1,12 @@
+import csv
 from collections import defaultdict
 from pathlib import Path
-from prettytable import PrettyTable
 from typing import List, Dict
+
+from prettytable import PrettyTable
+
 from base import Raffle
 from raffles import raffle_01, raffle_02, raffle_03, raffle_04, raffle_05, raffle_06
-import csv
 
 
 def triples(bag: list[int]) -> int:
@@ -40,7 +42,7 @@ def make_snapshot(raffles: List[Raffle]) -> Dict[str, List[int]]:
     return snappy
 
 
-def calculate_sets(raffles: List[Raffle]):
+def calculate_sets(raffles: List[Raffle], path: Path):
     numbers = list(map(lambda raffle: raffle.number, raffles))
     headers = ["addr"] + numbers + ["sets"]
 
@@ -83,7 +85,7 @@ def calculate_sets(raffles: List[Raffle]):
 
 
 if __name__ == "__main__":
-    path = Path(f"../../files/sets")
+    path = Path(f"../../files/airdrop")
     path.mkdir(parents=True, exist_ok=True)
 
     assert min(triples([5, 4, 2, 1, 6]), 6) == 6
@@ -92,4 +94,14 @@ if __name__ == "__main__":
     assert min(triples([7, 11, 5, 10, 20]), 20) == 16
     assert min(triples([1, 1, 1, 1, 1]), 3) == 1
 
-    calculate_sets([raffle_01, raffle_02, raffle_03, raffle_04, raffle_05, raffle_06])
+    calculate_sets(
+        raffles=[
+            raffle_01,
+            raffle_02,
+            raffle_03,
+            raffle_04,
+            raffle_05,
+            raffle_06,
+        ],
+        path=path,
+    )
