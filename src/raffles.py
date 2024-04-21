@@ -31,6 +31,7 @@ raffle_01 = Raffle(
         "12c1f9c6754952e2c26b37af3c8facee41ed5b398c0223ff9f4848c4476f6c64547265617375726549736c616e6430303233": "GoldTreasureIsland0023 (golden ticket raffle #1)",
         "12c1f9c6754952e2c26b37af3c8facee41ed5b398c0223ff9f4848c4476f6c64746865436f756e746f664d6f6e746543726973746f30303138": "GoldtheCountofMonteCristo0018 (golden ticket raffle #1)",
     },
+    previous=[],
 )
 
 raffle_02 = Raffle(
@@ -63,6 +64,9 @@ raffle_02 = Raffle(
         "3568e07d31ab3c217ea594bfff9744a00a91225fa53244514ffeefb5476f6c64656e456e7472795469636b657430393638": "GoldenEntryTicket0968 (golden ticket raffle #2)",
         "3568e07d31ab3c217ea594bfff9744a00a91225fa53244514ffeefb5476f6c64656e456e7472795469636b657432333236": "GoldenEntryTicket2326 (golden ticket raffle #2)",
     },
+    previous=[
+        raffle_01,
+    ],
 )
 
 raffle_03 = Raffle(
@@ -117,6 +121,10 @@ raffle_03 = Raffle(
         "dcaae559714f022242d3302378374d8e117abff4c2ab6de2ed235c983033526166666c655469636b657430303434": "03RaffleTicket0044 (golden ticket raffle #3)",
         "dcaae559714f022242d3302378374d8e117abff4c2ab6de2ed235c983033526166666c655469636b657430303435": "03RaffleTicket0045 (golden ticket raffle #3)",
     },
+    previous=[
+        raffle_02,
+        raffle_01,
+    ],
 )
 
 raffle_04 = Raffle(
@@ -163,6 +171,11 @@ raffle_04 = Raffle(
         "eed8d82ba538429e6b11af6db02196c07b7505c1a8334ed16ed9a6e03034526166666c655469636b657430303336": "04RaffleTicket0036 (golden ticket raffle #4)",
         "eed8d82ba538429e6b11af6db02196c07b7505c1a8334ed16ed9a6e03034526166666c655469636b657430303337": "04RaffleTicket0037 (golden ticket raffle #4)",
     },
+    previous=[
+        raffle_03,
+        raffle_02,
+        raffle_01,
+    ],
 )
 
 raffle_05 = Raffle(
@@ -211,6 +224,12 @@ raffle_05 = Raffle(
         "acccccd01ef1519ae920d278fa34fa795a4a7728a276e941fcbbd83c3035526166666c655469636b657430303338": "05RaffleTicket0038 (golden ticket raffle #5)",
         "acccccd01ef1519ae920d278fa34fa795a4a7728a276e941fcbbd83c3035526166666c655469636b657430303339": "05RaffleTicket0039 (golden ticket raffle #5)",
     },
+    previous=[
+        raffle_04,
+        raffle_03,
+        raffle_02,
+        raffle_01,
+    ],
 )
 
 raffle_06 = Raffle(
@@ -251,4 +270,11 @@ raffle_06 = Raffle(
         "888cf451e36bcc4c6096daf0968faebbf05be366dd6f98f69f9835813036526166666c655469636b6574303330": "06RaffleTicket030 (golden ticket raffle #6)",
         "888cf451e36bcc4c6096daf0968faebbf05be366dd6f98f69f9835813036526166666c655469636b6574303331": "06RaffleTicket031 (golden ticket raffle #6)",
     },
+    previous=[
+        raffle_05,
+        raffle_04,
+        raffle_03,
+        raffle_02,
+        raffle_01,
+    ],
 )

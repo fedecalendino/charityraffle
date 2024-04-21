@@ -4,11 +4,19 @@ import maestro
 
 
 class Raffle:
-    def __init__(self, id: str, name: str, policy_id: str, goldens: Dict[str, str]):
+    def __init__(
+        self,
+        id: str,
+        name: str,
+        policy_id: str,
+        goldens: Dict[str, str],
+        previous: List["Raffle"],
+    ):
         self.id: str = id
         self.name: str = name
         self.policy_id: str = policy_id
         self.goldens: Dict[str, str] = goldens
+        self.previous: List[Raffle] = previous
 
     @property
     def snapshot(self) -> Iterable[Tuple[str, List[str]]]:
@@ -17,3 +25,10 @@ class Raffle:
     @property
     def golden_snapshot(self) -> Iterable[Tuple[str, List[str]]]:
         yield from maestro.get_snapshot(self.policy_id, self.goldens, gold_only=True)
+
+    @property
+    def full_snapshot(self) -> Iterable[Tuple[str, List[str]]]:
+        yield from self.snapshot
+
+        for previous in self.previous:
+            yield from previous.golden_snapshot
