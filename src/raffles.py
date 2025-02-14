@@ -284,3 +284,22 @@ raffle_06 = Raffle(
         raffle_01,
     ],
 )
+
+
+raffle_07 = Raffle(
+    id="ceasm",
+    number=7,
+    name="Charity Raffle for CEASM",
+    policy_id="8284abbc55fd3be83560408eb12345678609362e5724788e55bb77ce",
+    goldens={
+
+    },
+    previous=[
+        raffle_06,
+        raffle_05,
+        raffle_04,
+        raffle_03,
+        raffle_02,
+        raffle_01,
+    ],
+)
