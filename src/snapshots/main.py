@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from raffles import raffle_06
+from raffles import raffle_07
 
-raffle = raffle_06
+raffle = raffle_07
 
 path = Path(f"../../files/{raffle.number}. {raffle.id}")
 path.mkdir(parents=True, exist_ok=True)
